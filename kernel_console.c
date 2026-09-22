@@ -123,8 +123,9 @@ int main() {
                     }
                     if( kc->ccmd = "usr logout" ) {
                          kernel_disconnect_user_console( kc, usr );
+                         kc->status = KERNEL_CONSOLE_STATUS_DISCONNECTED;
+                         kernel_set_console_status( kc, usr );
                     }
           }
-
   return 0;
 }
