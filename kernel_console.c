@@ -86,7 +86,22 @@ void kernel_set_user_credential( struct k_usr* usr, int page, const char* info )
 }
 
 int main() {
-    
+     static struct k_console * kc = {
+          .status = KERNEL_CONSOLE_STATUS_CONNECTED;
+          .line = 0;
+          .ccmd = "";
+     };
      
-    return 0;
+     static struct k_usr* usr = {
+          .kusrn = NULL;
+          .kusrp = NULL;
+          .usr_console = kc;
+     };
+
+     kernel_set_user_credential( usr, KERNEL_USER_PAGE_USERNAME, "Hunter" );
+     kernel_set_user_credential( usr, KERNEL_USER_PAGE_PASSWORD, "M. Admin" );
+
+     kernel_set_console_status( kc, usr );
+
+  return 0;
 }
