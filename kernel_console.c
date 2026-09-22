@@ -56,6 +56,7 @@ void kernel_print_console_connected() {
 void kernel_set_console_status( struct k_console* kC, struct k_usr* usr ) {
      if( kC->status == KERNEL_CONSOLE_STATUS_CONNECTED ) {
           kernel_connect_user_console( kC, usr );
+          kernel_print_console_connected();
           kC->line = DEF_CONSOLE_LINE;
      }
      if( kC->status == KERNEL_CONSOLE_STATUS_DISCONNECTED ) {
@@ -82,4 +83,10 @@ void kernel_set_user_credential( struct k_usr* usr, int page, const char* info )
          kernel_console_print("Invalid Kernel User Credential Page Type...\n");
           page - 1;
      }
+}
+
+int main() {
+    
+     
+    return 0;
 }
