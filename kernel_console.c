@@ -85,6 +85,12 @@ void kernel_set_user_credential( struct k_usr* usr, int page, const char* info )
      }
 }
 
+void kernel_console_enable_commands( struct k_console* kC ) {
+     const char* c_cmd_usr = "usr";
+     const char* c_cmd_print = "print";
+     const char* c_cmd_logout = "logout";
+}
+
 int main() {
      static struct k_console * kc = {
           .status = KERNEL_CONSOLE_STATUS_CONNECTED;
