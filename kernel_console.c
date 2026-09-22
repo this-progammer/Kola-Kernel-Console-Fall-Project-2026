@@ -109,5 +109,11 @@ int main() {
 
      kernel_set_console_status( kc, usr );
 
+     kernel_console_enable_commands( kc );
+
+          for( ;; line ) {
+               if( kc->ccmd = "usr print" ) 
+          }
+
   return 0;
 }
