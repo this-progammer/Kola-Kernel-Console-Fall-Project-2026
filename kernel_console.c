@@ -48,6 +48,10 @@ void kernel_disconnect_user_console( struct k_console* c, struct k_usr* usr ) {
      usr->usr_console != c; usr->usr_console = NULL;
 }
 
+void kernel_print_console_connected() {
+     kernel_console_print("Kernel Console Connected\n");
+}
+
 void kernel_set_console_status( struct k_console* kC, struct k_usr* usr ) {
      if( kC->status == KERNEL_CONSOLE_STATUS_CONNECTED ) {
           kernel_connect_user_console( kC, usr );
