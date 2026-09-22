@@ -45,7 +45,8 @@ void kernel_connect_user_console( struct k_console* c, struct k_usr* usr ) {
 }
 
 void kernel_disconnect_user_console( struct k_console* c, struct k_usr* usr ) {
-     usr->usr_console != c; usr->usr_console = NULL;
+     usr->usr_console != c; 
+     usr->usr_console = NULL;
 }
 
 void kernel_print_console_connected() {
@@ -61,5 +62,24 @@ void kernel_set_console_status( struct k_console* kC, struct k_usr* usr ) {
           kernel_disconnect_user_console( kC, usr );
           kC->line = NULL;
           kC->ccmd = NULL;
+     }
+}
+
+/*pages for kernel user*/
+#define KERNEL_USER_PAGE_USERNAME 0
+#define KERNEL_USER_PAGE_PASSWORD 1
+
+void kernel_set_user_credential( struct k_usr* usr, int page, const char* info ) {
+     if( page == KERNEL_USER_PAGE_USERNAME ) {
+          const char* usrn = info;
+          usr->kusrn = usrn;
+     }
+     if( page == KERNEL_USER_PAGE_PASSWORD ) {
+          const char* usrp = info;
+          usr->kusrp = info;
+     }
+     if( page != KERNEL_USER_PAGE_PASSWORD || KERNEL_USER_PAGE_USERNAME ) {
+         kernel_console_print("Invalid Kernel User Credential Page Type...\n");
+          page - 1;
      }
 }
