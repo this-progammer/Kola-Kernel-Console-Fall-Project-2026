@@ -102,6 +102,12 @@ int kernel_console_set_assembly_mode( struct k_console* kC ) {
    return nMode;
 }
 
+void kernel_console_host_server( struct k_console* kC, static double ip ) {
+     for(;;kC){
+          *ip;
+     }
+}
+
 int main() {
      static struct k_console * kc = {
           .status = KERNEL_CONSOLE_STATUS_CONNECTED,
