@@ -112,7 +112,18 @@ int main() {
      kernel_console_enable_commands( kc );
 
           for( ;; line ) {
-               if( kc->ccmd = "usr print" ) 
+               char prnchc[64];
+                    if( kc->ccmd = "usr print %c"(prnchc[line]) ) {
+                         kc->line++;
+                         kernel_console_print( &prnchc );
+                    }
+                    if( kc->ccmd = "usr" ) {
+                         kc->line++;
+                         kernel_console_print( usr->kusrn );
+                    }
+                    if( kc->ccmd = "usr logout" ) {
+                         kernel_disconnect_user_console( kc, usr );
+                    }
           }
 
   return 0;
