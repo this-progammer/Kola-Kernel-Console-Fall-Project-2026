@@ -24,6 +24,7 @@ struct k_console {
      int status;
      int line;
      char* ccmd[32];
+     int asmmode;
 };
 
 struct k_usr {
@@ -91,17 +92,27 @@ void kernel_console_enable_commands( struct k_console* kC ) {
      const char* c_cmd_logout = "logout";
 }
 
+const char* kernel_console_asm_list[] = {
+      return "kmov", "ax", "ah"
+};
+
+int kernel_console_set_assembly_mode( struct k_console* kC ) {
+     int* nMode = kC->asmmode;
+     nMode = 1;
+   return nMode;
+}
+
 int main() {
      static struct k_console * kc = {
-          .status = KERNEL_CONSOLE_STATUS_CONNECTED;
-          .line = 0;
-          .ccmd = "";
+          .status = KERNEL_CONSOLE_STATUS_CONNECTED,
+          .line = 0,
+          .ccmd = ""
      };
      
      static struct k_usr* usr = {
-          .kusrn = NULL;
-          .kusrp = NULL;
-          .usr_console = kc;
+          .kusrn = NULL,
+          .kusrp = NULL,
+          .usr_console = kc
      };
 
      kernel_set_user_credential( usr, KERNEL_USER_PAGE_USERNAME, "Hunter" );
