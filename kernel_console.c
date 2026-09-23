@@ -130,7 +130,7 @@ struct kern_console_config_rtr_pg {
 /*kernel call to bios page*/
 struct kernel_call_to_bios_page{
      int pgbit;
-     char biosaddr[16];
+     char biosaddr[32];/*0xF0000 - 0xFFFFF*/
 };
 
 int main() {
