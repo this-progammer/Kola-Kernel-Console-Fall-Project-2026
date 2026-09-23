@@ -123,13 +123,18 @@ void kernel_console_host_server( struct k_console* kC, static double ip ) {
      }
 }
 
+/*kernel console open page*/
+void kernel_console_open_page( void* kpg ) {
+     (&kpg);
+}
+
 /*kernel console configure router page*/
 struct kern_console_config_rtr_pg {
 };
 
 /*kernel console call router config page*/
 void kernel_console_call_router_config_page( struct kern_console_config_rtr_pg* kcrp ) {
-     *kcrp;
+     kernel_console_open_page(&kcrp);
 }
 
 /*kernel call to bios page*/
@@ -140,7 +145,7 @@ struct kernel_call_to_bios_page{
 
 /*kernel call bios page*/
 void kernel_call_bios_page( struct kernel_call_to_bios_page* kpg ) {
-     *kpg;
+     kernel_console_open_page(&kpg);
 }
 
 /*kernel set bios page bits*/
